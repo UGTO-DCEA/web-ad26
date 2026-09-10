@@ -1,0 +1,21 @@
+p{
+    color: black;
+}
+
+.btn-sumar{
+    border-style: dashed double none;
+    background-color: pink;
+    box-shadow: 5px teal;
+}
+
+.propio{
+    color: red;
+}
+
+.avatar{
+    width: 10%;
+}
+
+#unico{
+    color: purple;
+}
