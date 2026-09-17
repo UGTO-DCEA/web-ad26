@@ -1,0 +1,45 @@
+<h1>Simpsons</h1>
+
+<p>Total: {{ personajes().length }}</p>
+
+<p>Primer personaje: {{ personajes()[0]?.name }}</p>
+<h1>SIMpsons</h1>
+
+<p>Total de personajes: {{ personajes().length }}</p>
+
+@for (personaje of personajes(); track personaje.id) {
+  <p>{{ personaje.name }}</p>
+}
+<div class="cards-container">
+  @for (personaje of personajes(); track personaje.id) {
+    <mat-card appearance="outlined" class="character-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+
+        <mat-card-title>
+          {{ personaje.name }}
+        </mat-card-title>
+
+        <mat-card-subtitle>
+          {{ personaje.age }}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <img
+        mat-card-image
+        [src]="'https://cdn.thesimpsonsapi.com/200/character/' + personaje.id + '.webp'"
+        [alt]="'Photo ' + personaje.name"
+      />
+
+      <mat-card-content>
+        @for (phrase of personaje.phrases; track phrase) {
+          <p>
+            {{ phrase }}
+          </p>
+        }
+      </mat-card-content>
+
+      <mat-card-actions> </mat-card-actions>
+    </mat-card>
+  }
+</div>
