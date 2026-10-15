@@ -1,0 +1,45 @@
+## Visual Studio y .NET Core
+/[Bb]in/
+/[Oo]bj/
+/x64/
+/x86/
+/[Dd]ebug/
+/[Rr]elease/
+/[Ff]ile[Ss]ync/
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# IDE específico (JetBrains Rider, VS Code)
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Publicaciones y resultados de compilación
+/[Pp]ublish/
+/[Pp]ublished/
+*.pubxml
+*.pubxml.user
+
+# Paquetes NuGet
+**/packages/*
+!**/packages/build/
+*.nupkg
+
+# Archivos de configuración de usuario o secretos locales
+appsettings.Development.json
+appsettings.Local.json
+*.pem
+*.key
+
+# Archivos de diagnóstico y bitácoras
+*.log
+*.sqlite
+*.db
