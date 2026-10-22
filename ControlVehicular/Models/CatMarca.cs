@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace ControlVehicular.Models
 {
@@ -9,6 +10,7 @@ namespace ControlVehicular.Models
         [Required]
         public string Marca { get; set; } = string.Empty;
 
+        [JsonIgnore]
         public ICollection<Vehiculo> Vehiculos { get; set; } = new List<Vehiculo>();
     }
 }
