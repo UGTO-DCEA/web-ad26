@@ -1,0 +1,12 @@
+<form [formGroup]="formulario">
+  <label>Año</label>
+  <input type="text" formControlName="year" />
+  <label>Modelo</label>
+  <input type="text" formControlName="modelo" />
+  <label>Marca</label>
+  <select formControlName="marcaId">
+    <option value="1">Nissan</option>
+    <option value="2">Toyota</option>
+    <option value="3">Honda</option>
+  </select>
+</form>
