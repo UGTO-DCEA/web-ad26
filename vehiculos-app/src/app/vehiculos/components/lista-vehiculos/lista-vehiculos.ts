@@ -29,4 +29,13 @@ export class ListaVehiculos implements OnInit {
   obtenerVehiculos(): Observable<IVehiculo[]> {
     return this.httpClient.get<IVehiculo[]>(this.url);
   }
+
+  eliminarVehiculo(id: number): void {
+    this.httpClient.delete(`${this.url}/${id}`).subscribe(() => {
+      //? Actualizar la lista de vehiculos despues de eliminar pero con los mismos datos
+      this.listaVehiculos.set(this.listaVehiculos().filter((vehiculo) => vehiculo.id !== id));
+      //? Actualizar desde la db la lista de vehiculos despues de eliminar
+      this.obtenerVehiculos();
+    });
+  }
 }

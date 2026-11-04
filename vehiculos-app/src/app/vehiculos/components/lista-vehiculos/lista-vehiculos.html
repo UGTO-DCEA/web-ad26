@@ -1,4 +1,6 @@
 @for (vehiculo of listaVehiculos(); track vehiculo.id) {
   <p>{{ vehiculo.modelo }}</p>
   <p>{{ vehiculo.year }}</p>
+  <button (click)="eliminarVehiculo(vehiculo.id)">Eliminar</button>
+  <button (click)="eliminarVehiculo(vehiculo.id)">Editar</button>
 }
