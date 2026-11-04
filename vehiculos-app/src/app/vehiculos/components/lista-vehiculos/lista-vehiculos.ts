@@ -18,7 +18,7 @@ export class ListaVehiculos implements OnInit {
   }
 
   editarComponent = signal<boolean>(false);
-  vehiculoId = signal<number>(0);
+  vehiculoIdLista = signal<number>(0);
 
   //? Inject HttpClient
   private httpClient = inject(HttpClient);
@@ -40,13 +40,18 @@ export class ListaVehiculos implements OnInit {
       //? Actualizar la lista de vehiculos despues de eliminar pero con los mismos datos
       this.listaVehiculos.set(this.listaVehiculos().filter((vehiculo) => vehiculo.id !== id));
       //? Actualizar desde la db la lista de vehiculos despues de eliminar
-      this.obtenerVehiculos();
+      this.obtenerVehiculos().subscribe((vehiculos) => {
+        this.listaVehiculos.set(vehiculos);
+      });
     });
   }
 
   //?Editar vehiculo
   editarVehiculo(id: number): void {
-    this.vehiculoId.set(id);
+    this.vehiculoIdLista.set(id);
     this.editarComponent.set(true);
+    this.obtenerVehiculos().subscribe((vehiculos) => {
+      this.listaVehiculos.set(vehiculos);
+    });
   }
 }
