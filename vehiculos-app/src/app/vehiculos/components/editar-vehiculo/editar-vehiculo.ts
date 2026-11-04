@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, input, OnInit, signal } from '@angular/core';
 import { ICatMarca } from '../../models/ICatMarca';
 import { NuevoVehiculo } from '../crear-vehiculo/crear-vehiculo';
 import { HttpClient } from '@angular/common/http';
@@ -10,7 +10,20 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './editar-vehiculo.scss',
   templateUrl: './editar-vehiculo.html',
 })
-export class EditarVehiculo {
+export class EditarVehiculo implements OnInit {
+  ngOnInit(): void {
+    this.obtenerMarcas().subscribe({
+      next: (marcas) => {
+        this.marcas.set(marcas);
+      },
+      error: (error) => {
+        console.error('Error al obtener las marcas:', error);
+      },
+    });
+  }
+
+  vehiculoId = input.required<number>();
+
   private form = inject(FormBuilder);
   private readonly urlCatMarcas = 'https://localhost:7189/api/catalogos';
   private readonly urlGuardarVehiculo = 'https://localhost:7189/api/vehiculos';
@@ -42,13 +55,15 @@ export class EditarVehiculo {
     });
     console.log('Nuevo Vehículo:', this.nuevoVehiculo());
 
-    this.http.post(this.urlGuardarVehiculo, this.nuevoVehiculo()).subscribe({
-      next: (response) => {
-        console.log('Vehículo guardado exitosamente:', response);
-      },
-      error: (error) => {
-        console.error('Error al guardar el vehículo:', error);
-      },
-    });
+    this.http
+      .put(this.urlGuardarVehiculo + '/' + this.vehiculoId(), this.nuevoVehiculo())
+      .subscribe({
+        next: (response) => {
+          console.log('Vehículo guardado exitosamente:', response);
+        },
+        error: (error) => {
+          console.error('Error al guardar el vehículo:', error);
+        },
+      });
   }
 }

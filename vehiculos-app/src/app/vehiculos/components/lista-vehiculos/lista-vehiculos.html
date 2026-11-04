@@ -2,5 +2,9 @@
   <p>{{ vehiculo.modelo }}</p>
   <p>{{ vehiculo.year }}</p>
   <button (click)="eliminarVehiculo(vehiculo.id)">Eliminar</button>
-  <button (click)="eliminarVehiculo(vehiculo.id)">Editar</button>
+  <button (click)="editarVehiculo(vehiculo.id)">Editar</button>
+}
+
+@if (editarComponent()) {
+  <app-editar-vehiculo [vehiculoId]="vehiculoId()"></app-editar-vehiculo>
 }
