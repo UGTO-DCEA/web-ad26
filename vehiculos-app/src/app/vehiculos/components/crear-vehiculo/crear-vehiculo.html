@@ -1,13 +1,39 @@
-<form [formGroup]="formulario">
-  <label>Año</label>
-  <input type="text" formControlName="year" />
-  <label>Modelo</label>
-  <input type="text" formControlName="modelo" />
-  <label>Marca</label>
-  <select formControlName="catMarcaId">
-    @for (marca of marcas(); track marca.id) {
-      <option [ngValue]="marca.id">{{ marca.marca }}</option>
-    }
-  </select>
-  <button type="button" (click)="guardarVehiculo()">Guardar</button>
-</form>
+<mat-card appearance="outlined" style="margin: 20px; width: 40%">
+  <mat-card-header>
+    <mat-card-title>Crear Vehículo</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="formulario">
+      <p>
+        <mat-form-field class="example-full-width">
+          <mat-label>Año</mat-label>
+          <input matInput type="number" placeholder="Año del vehículo" formControlName="year" />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field class="example-full-width">
+          <mat-label>Modelo</mat-label>
+          <input matInput type="text" placeholder="Modelo del vehículo" formControlName="modelo" />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <mat-label>Marcas</mat-label>
+          <mat-select formControlName="catMarcaId">
+            @for (marca of marcas(); track marca.id) {
+              <mat-option [value]="marca.id">{{ marca.marca }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <button matFab extended (click)="guardarVehiculo()">
+          <mat-icon>add</mat-icon>
+          Agregar
+        </button>
+      </p>
+    </form>
+  </mat-card-content></mat-card
+>

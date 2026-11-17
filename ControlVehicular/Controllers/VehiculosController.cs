@@ -84,6 +84,7 @@ namespace ControlVehicular.Controllers
                 return NotFound();
             }
             vehiculo.Modelo = vehiculoActualizado.Modelo;
+            vehiculo.Year = vehiculoActualizado.Year;
             dbContext.Vehiculos.Update(vehiculo);
             var result = dbContext.SaveChangesAsync();
             if (result != null)

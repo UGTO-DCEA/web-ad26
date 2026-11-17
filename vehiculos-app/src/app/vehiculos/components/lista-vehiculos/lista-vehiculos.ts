@@ -3,9 +3,13 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { IVehiculo } from '../../models/IVehiculo';
 import { Observable } from 'rxjs';
 import { EditarVehiculo } from '../editar-vehiculo/editar-vehiculo';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  imports: [EditarVehiculo],
+  imports: [EditarVehiculo, MatCardModule, MatDividerModule, MatButtonModule, MatIconModule],
   selector: 'app-lista-vehiculos',
   styleUrl: './lista-vehiculos.scss',
   templateUrl: './lista-vehiculos.html',
@@ -50,8 +54,5 @@ export class ListaVehiculos implements OnInit {
   editarVehiculo(id: number): void {
     this.vehiculoIdLista.set(id);
     this.editarComponent.set(true);
-    this.obtenerVehiculos().subscribe((vehiculos) => {
-      this.listaVehiculos.set(vehiculos);
-    });
   }
 }

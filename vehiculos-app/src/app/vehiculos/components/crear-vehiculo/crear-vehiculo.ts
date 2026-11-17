@@ -2,6 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ICatMarca } from '../../models/ICatMarca';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 
 export interface NuevoVehiculo {
   year: string | null;
@@ -10,7 +18,17 @@ export interface NuevoVehiculo {
 }
 
 @Component({
-  imports: [ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatIconModule,
+    MatDividerModule,
+    MatButtonModule,
+    MatCardModule,
+    MatSelectModule,
+  ],
   selector: 'app-crear-vehiculo',
   styleUrl: './crear-vehiculo.scss',
   templateUrl: './crear-vehiculo.html',
@@ -54,6 +72,7 @@ export class CrearVehiculo implements OnInit {
     this.nuevoVehiculo.set({
       ...valoresFormulario,
       catMarcaId: valoresFormulario.catMarcaId ? Number(valoresFormulario.catMarcaId) : 0,
+      year: String(valoresFormulario.year),
     });
     console.log('Nuevo Vehículo:', this.nuevoVehiculo());
 

@@ -1,8 +1,22 @@
 @for (vehiculo of listaVehiculos(); track vehiculo.id) {
-  <p>{{ vehiculo.modelo }}</p>
-  <p>{{ vehiculo.year }}</p>
-  <button (click)="eliminarVehiculo(vehiculo.id)">Eliminar</button>
-  <button (click)="editarVehiculo(vehiculo.id)">Editar</button>
+  <mat-card class="example-card" appearance="outlined" style="margin: 20px; width: 40%">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Vehículo</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ vehiculo.modelo }}</p>
+      <p>{{ vehiculo.year }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button matFab (click)="eliminarVehiculo(vehiculo.id)" style="margin-right: 10px">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button matFab (click)="editarVehiculo(vehiculo.id)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
 }
 
 @if (editarComponent()) {
